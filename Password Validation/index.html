@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Validation</title>
+
+</head>
+<body>
+    <h1>Password Validation</h1>
+    <form >
+        <input type="password" id="pass" placeholder="Enter Password">
+        <p id="message"></p>
+    </form>
+</body>
+<script>
+    const password = document.querySelector('#pass')
+    const message = document.querySelector('#message')
+
+    password.addEventListener('input', function(){
+        const pass = password.value
+
+        if(pass.length < 6){
+            message.textContent = 'Password must be at least 6 characters long'
+            message.style.color = 'red'
+        } else {
+            message.textContent = 'Password is valid'
+            message.style.color = 'green'
+        }
+    })
+</script>
+</html>
