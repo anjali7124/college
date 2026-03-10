@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>color changing theme</title>
+</head>
+<body>
+    <h1>Color Changing Theme
+    </h1>
+    <button class="changer">Red</button>
+    <button class="changer">Green</button>
+    <button class="changer">Blue</button>
+
+</body>
+<script>
+    let button = document.querySelectorAll('.changer');
+    button.forEach(function(btn){
+        btn.addEventListener('click', function( event){
+            const color = event.target.innerText
+            document.body.style.backgroundColor = color
+        });
+    });
+</script>
+
+</html>
