@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h2>Registration form</h2>
+    <form id="form">
+        <label for="name"><b>Name</b></label><br>
+        <input type="text" placeholder="Enter Your Name" name="name" id="name" required><br>
+        <p id="namemsg"></p>
+        <label for="email"><b>Email</b></label><br>
+        <input type="text" placeholder="Enter Your Email" name="email" id="email" required><br>
+        <p id="emailmsg"></p>
+        <label for="phone"><b>Phone Number</b></label><br>
+        <input type="number" placeholder="Enter Your Phone Number" name="phone" id="phone" required><br>
+        <p id="phonemsg"></p>
+        <label for="password"><b>Password</b></label><br>
+        <input type="password" placeholder="Enter Your Password" name="password" id="password" required>
+        <button type="button" id="toggle">show</button><br>
+        <p id="passmsg"></p>
+        <button type="submit">Register</button>
+    </form>
+</body>
+<script>
+    const form = document.querySelector("#form")
+
+    const name = document.querySelector("#name")
+    const email = document.querySelector("#email")
+    const phone = document.querySelector("#phone")
+    const pass = document.querySelector("#password")
+
+    const nameMsg = document.querySelector("#namemsg")
+    const emailMsg = document.querySelector("#emailmsg")
+    const phoneMsg = document.querySelector("#phonemsg")
+    const passMsg = document.querySelector("#passmsg")
+
+    const toggle = document.querySelector("#toggle")
+    // NAME VALIDATION
+    name.addEventListener("input", function () {
+        if (name.value.length < 3) {
+            nameMsg.innerText = "Name must be at least 3 characters"
+            nameMsg.className = "error"
+        }
+        else {
+            nameMsg.innerText = "Valid name"
+            nameMsg.className = "success"
+        }
+    })
+    // EMAIL VALIDATION
+    email.addEventListener("input", function () {
+        if (!email.value.includes("@")) {
+            emailMsg.innerText = "Invalid Email"
+            emailMsg.className = "error"
+        }
+        else {
+            emailMsg.innerText = "Valid Email"
+            emailMsg.className = "success"
+        }
+    })
+
+    // PHONE VALIDATION
+    phone.addEventListener("input", function () {
+        if (phone.value.length != 10) {
+            phoneMsg.innerText = "Phone must be 10 digits"
+            phoneMsg.className = "error"
+        }
+        else {
+            phoneMsg.innerText = "Valid Phone"
+            phoneMsg.className = "success"
+        }
+    })
+
+    // PASSWORD VALIDATION
+    pass.addEventListener("input", function () {
+        if (pass.value.length < 6) {
+            passMsg.innerText = "Weak password (min 6 characters)"
+            passMsg.className = "error"
+        }
+        else if (pass.value.length < 10) {
+            passMsg.innerText = "Medium password"
+            passMsg.style.color = "orange"
+        }
+        else {
+            passMsg.innerText = "Strong password"
+            passMsg.className = "success"
+        }
+    })
+
+    // SHOW / HIDE PASSWORD
+    toggle.addEventListener("click", function () {
+        if (pass.type === "password") {
+            pass.type = "text"
+            toggle.innerText = "Hide"
+        }
+        else {
+            pass.type = "password"
+            toggle.innerText = "Show"
+        }
+    })
+
+    // FORM SUBMIT + LOCALSTORAGE
+    form.addEventListener("submit", function (e) {
+        e.preventDefault()
+        const data = {
+            name: name.value,
+            email: email.value,
+            phone: phone.value,
+            password: pass.value
+        }
+        let submissions = JSON.parse(localStorage.getItem("submissions")) || []
+        submissions.push(data)
+        localStorage.setItem("submissions", JSON.stringify(submissions))
+        form.reset()
+
+    })
+
+
+</script>
+
+</html>
