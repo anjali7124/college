@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>🌍 Weather Dashboard</h1>
+
+<div class="input-box">
+<input type="text" id="city1" placeholder="Enter City 1">
+<input type="text" id="city2" placeholder="Enter City 2">
+<input type="text" id="city3" placeholder="Enter City 3">
+
+<button onclick="loadWeather()">Get Weather</button>
+</div>
+
+<div id="loader" class="loader" style="display:none;"></div>
+<div id="error" class="error"></div>
+
+<div class="container" id="weatherContainer"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
