@@ -1,0 +1,70 @@
+body{
+font-family: Arial;
+background:#f4f6f8;
+text-align:center;
+}
+
+.input-box{
+margin-top:20px;
+}
+
+input{
+padding:10px;
+margin:5px;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+button{
+padding:10px 20px;
+border:none;
+background:#3498db;
+color:white;
+border-radius:5px;
+cursor:pointer;
+}
+
+.container{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-top:30px;
+}
+
+.card{
+background:white;
+padding:20px;
+width:200px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.temp{
+font-size:28px;
+font-weight:bold;
+}
+
+.emoji{
+font-size:40px;
+}
+
+.loader{
+border:6px solid #f3f3f3;
+border-top:6px solid #3498db;
+border-radius:50%;
+width:40px;
+height:40px;
+animation:spin 1s linear infinite;
+margin:20px auto;
+}
+
+@keyframes spin{
+0%{transform:rotate(0deg)}
+100%{transform:rotate(360deg)}
+}
+
+.error{
+color:red;
+margin-top:20px;
+}
